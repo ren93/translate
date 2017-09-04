@@ -72,8 +72,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/shared_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginRight="16dp"
         android:transitionName="shared_image_"
         android:src="@drawable/ic_aym"/>
