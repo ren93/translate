@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:clipChildren="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/transition_oval"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:src="@drawable/ic_aym"/>
+
+    <ImageView
+        android:id="@+id/transition_square"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_below="@id/transition_oval"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="105dp"
+        android:background="#990000"
+        />
+
+    <ImageView
+        android:id="@+id/transition_image"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/transition_oval"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="105dp"
+        android:src="@mipmap/ic_launcher"
+        />
+
+</RelativeLayout>
