@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".scene.SceneBerNoActivity">
         </activity>
+        <activity android:name=".WithSharedElementTransitionsActivity">
+        </activity>
     </application>
 
 </manifest>
