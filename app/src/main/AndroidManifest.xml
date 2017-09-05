@@ -29,7 +29,8 @@
         </activity>
         <activity android:name=".scene.SceneBerNoActivity">
         </activity>
-        <activity android:name=".transitions.WithSharedElementTransitionsActivity">
+        <activity android:name=".transitions.WithSharedElementTransitionsActivity"/>
+        <activity android:name=".transitions.WithSharedElementTransitionsBerActivity">
         </activity>
     </application>
 

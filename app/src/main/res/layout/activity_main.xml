@@ -82,6 +82,12 @@
             android:onClick="withShared"
             android:text="共享元素"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="withSharedBer"
+            android:text="共享元素自定义轨迹"/>
+
 
     </LinearLayout>
 
@@ -93,7 +99,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_aym"
-       />
+        />
 
     <TextView
         android:id="@+id/shared_text"

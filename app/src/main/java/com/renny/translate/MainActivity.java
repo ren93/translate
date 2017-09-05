@@ -1,6 +1,5 @@
 package com.renny.translate;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -22,6 +21,7 @@ import com.renny.translate.scene.SceneChangeBoundsLayoutActivity;
 import com.renny.translate.scene.SceneColorActivity;
 import com.renny.translate.transitions.TransitionsActivity;
 import com.renny.translate.transitions.WithSharedElementTransitionsActivity;
+import com.renny.translate.transitions.WithSharedElementTransitionsBerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,11 +54,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void jump(View view) {
         startActivity(new Intent(this, TransitionsActivity.class),
-                ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
     }
 
     public void withShared(View view) {
         Intent intent = new Intent(this, WithSharedElementTransitionsActivity.class);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this
+                , new Pair<View, String>(shared_image, "shared_image_")
+                , new Pair<View, String>(shared_text, "shared_text_"));
+        startActivity(intent, activityOptionsCompat.toBundle());
+    }
+   public void withSharedBer(View view) {
+        Intent intent = new Intent(this, WithSharedElementTransitionsBerActivity.class);
         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this
                 , new Pair<View, String>(shared_image, "shared_image_")
                 , new Pair<View, String>(shared_text, "shared_text_"));
