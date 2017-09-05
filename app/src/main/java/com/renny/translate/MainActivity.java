@@ -19,6 +19,8 @@ import com.renny.translate.scene.SceneBerNoActivity;
 import com.renny.translate.scene.SceneChangeBoundsActivity;
 import com.renny.translate.scene.SceneChangeBoundsLayoutActivity;
 import com.renny.translate.scene.SceneColorActivity;
+import com.renny.translate.shape.AnimatedVectorActivity;
+import com.renny.translate.shape.CustomSVGActivity;
 import com.renny.translate.transition.ChangeRect;
 import com.renny.translate.transitions.TransitionsActivity;
 import com.renny.translate.transitions.WithSharedElementTransitionsActivity;
@@ -92,6 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void sceneLayout(View view) {
         start(SceneChangeBoundsLayoutActivity.class);
+    }
+    public void shape(View view) {
+        start(AnimatedVectorActivity.class);
+    }
+    public void shapeC(View view) {
+        start(CustomSVGActivity.class);
     }
 
     public void start(Class<?> cls) {

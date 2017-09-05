@@ -31,7 +31,7 @@ public class TransitionsActivity extends AppCompatActivity {
         final float scale = getResources().getDisplayMetrics().density;
 
         Slide slide = new Slide();
-        slide.setDuration(1500);
+        slide.setDuration(500);
         slide.setSlideEdge(Gravity.LEFT);
         slide.addListener(new SimpleTransitionListener() {
             @Override
@@ -49,6 +49,7 @@ public class TransitionsActivity extends AppCompatActivity {
             @Override
             public void onTransitionEnd(Transition transition) {
                 Log.d("xxxx", "onTransitionEnd");
+
             }
 
         });
@@ -56,7 +57,7 @@ public class TransitionsActivity extends AppCompatActivity {
         getWindow().setEnterTransition(slide);
 
         Explode explode2 = new Explode();
-        explode2.setDuration(1700);
+        explode2.setDuration(700);
         explode2.setMode(Visibility.MODE_OUT);
         explode2.setInterpolator(new BounceInterpolator());
         getWindow().setReturnTransition(explode2);

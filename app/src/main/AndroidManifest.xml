@@ -32,6 +32,8 @@
         <activity android:name=".transitions.WithSharedElementTransitionsActivity"/>
         <activity android:name=".transitions.WithSharedElementTransitionsBerActivity">
         </activity>
+        <activity android:name=".shape.AnimatedVectorActivity"/>
+        <activity android:name=".shape.CustomSVGActivity"/>
     </application>
 
 </manifest>
