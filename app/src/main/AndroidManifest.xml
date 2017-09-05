@@ -22,6 +22,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".scene.SceneChangeBoundsActivity"/>
+        <activity android:name=".scene.SceneChangeBoundsLayoutActivity"/>
         <activity android:name=".scene.SceneColorActivity">
         </activity>
         <activity android:name=".scene.SceneBerActivity">

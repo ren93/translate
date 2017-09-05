@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.renny.translate.scene.SceneBerActivity;
 import com.renny.translate.scene.SceneBerNoActivity;
 import com.renny.translate.scene.SceneChangeBoundsActivity;
+import com.renny.translate.scene.SceneChangeBoundsLayoutActivity;
 import com.renny.translate.scene.SceneColorActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,10 +54,13 @@ public class MainActivity extends AppCompatActivity {
     public void scene(View view) {
         start(SceneChangeBoundsActivity.class);
     }
-
+    public void sceneLayout(View view) {
+        start(SceneChangeBoundsLayoutActivity.class);
+    }
     public void start(Class<?> cls){
         startActivity(new Intent(this, cls));
     }
+
 
 
 }
