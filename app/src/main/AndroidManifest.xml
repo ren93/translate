@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
+            android:name=".transitions.TransitionsActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -29,7 +29,7 @@
         </activity>
         <activity android:name=".scene.SceneBerNoActivity">
         </activity>
-        <activity android:name=".WithSharedElementTransitionsActivity">
+        <activity android:name=".transitions.WithSharedElementTransitionsActivity">
         </activity>
     </application>
 

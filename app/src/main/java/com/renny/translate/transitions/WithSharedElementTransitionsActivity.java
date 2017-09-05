@@ -1,4 +1,4 @@
-package com.renny.translate;
+package com.renny.translate.transitions;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 
+import com.renny.translate.R;
 import com.renny.translate.helper.CircularRevealAnimator;
 
 public class WithSharedElementTransitionsActivity extends AppCompatActivity {
@@ -35,7 +36,6 @@ public class WithSharedElementTransitionsActivity extends AppCompatActivity {
 
 
     private void initView() {
-
         liney_bottom = (LinearLayout) findViewById(R.id.liney_bottom);
     }
 

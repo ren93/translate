@@ -93,7 +93,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/ic_aym"
-        android:transitionName="shared_image_"/>
+       />
 
     <TextView
         android:id="@+id/shared_text"
@@ -102,7 +102,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="爱又米爱又米"
-        android:textSize="20dp"
-        android:transitionName="shared_text_"/>
+        />
 </LinearLayout>
 
