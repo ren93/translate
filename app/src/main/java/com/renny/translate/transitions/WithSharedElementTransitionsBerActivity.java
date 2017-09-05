@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 
 import com.renny.translate.R;
 import com.renny.translate.helper.CircularRevealAnimator;
-import com.renny.translate.transition.ChangeBer;
+import com.renny.translate.transition.ChangeRect;
 
 public class WithSharedElementTransitionsBerActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class WithSharedElementTransitionsBerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_with_shared_element_transitions);
+        setContentView(R.layout.activity_with_shared_element_transitions_ber);
         initView();
         initToolbar();
         DisplayMetrics dm = new DisplayMetrics();
@@ -32,7 +32,7 @@ public class WithSharedElementTransitionsBerActivity extends AppCompatActivity {
         Slide slide = new Slide();
         slide.setDuration(1500);
         slide.setSlideEdge(Gravity.LEFT);
-        getWindow().setSharedElementEnterTransition(new ChangeBer().setDuration(3000));
+        getWindow().setSharedElementEnterTransition(new ChangeRect().setDuration(3000));
 
         getWindow().setEnterTransition(slide);
 

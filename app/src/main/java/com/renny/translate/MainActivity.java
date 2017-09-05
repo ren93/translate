@@ -19,6 +19,7 @@ import com.renny.translate.scene.SceneBerNoActivity;
 import com.renny.translate.scene.SceneChangeBoundsActivity;
 import com.renny.translate.scene.SceneChangeBoundsLayoutActivity;
 import com.renny.translate.scene.SceneColorActivity;
+import com.renny.translate.transition.ChangeRect;
 import com.renny.translate.transitions.TransitionsActivity;
 import com.renny.translate.transitions.WithSharedElementTransitionsActivity;
 import com.renny.translate.transitions.WithSharedElementTransitionsBerActivity;
@@ -38,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setExitTransition(new Slide());
         Explode explode = new Explode();
-        explode.setDuration(700);
+        explode.setDuration(3000);
         explode.setMode(Visibility.MODE_IN);
         explode.setInterpolator(new DecelerateInterpolator());
         getWindow().setReenterTransition(explode);
+        getWindow().setSharedElementReenterTransition(new ChangeRect());
 
     }
 

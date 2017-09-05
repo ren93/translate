@@ -52,7 +52,7 @@ public class ChangeColor extends Transition {
         if (startBackground != endBackground) {
             ValueAnimator animator = ValueAnimator.ofObject(new ArgbEvaluator(),
                     startBackground, endBackground);
-            animator.setDuration(1000);
+            animator.setDuration(getDuration());
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
