@@ -11,18 +11,20 @@
         android:id="@+id/trans_path_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_margin="16dp"
+        android:layout_weight="1"
         trans:animDuration="800"
-        trans:viewPortWidth="160"
-        trans:viewPortHeight="240"
-        trans:strokeType="fill"
         trans:strokeColor="#2458ff"
-        trans:strokeWidth="2dp"/>
+        trans:strokeType="fill"
+        trans:strokeWidth="2dp"
+        trans:viewPortHeight="240"
+        trans:viewPortWidth="160"/>
 
     <SeekBar
         android:id="@+id/seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"/>
+
+
 </LinearLayout>

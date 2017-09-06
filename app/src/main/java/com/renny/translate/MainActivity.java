@@ -21,6 +21,7 @@ import com.renny.translate.scene.SceneChangeBoundsLayoutActivity;
 import com.renny.translate.scene.SceneColorActivity;
 import com.renny.translate.shape.AnimatedVectorActivity;
 import com.renny.translate.shape.CustomSVGActivity;
+import com.renny.translate.shape.CustomSVGTransitionFromActivity;
 import com.renny.translate.transition.ChangeRect;
 import com.renny.translate.transitions.TransitionsActivity;
 import com.renny.translate.transitions.WithSharedElementTransitionsActivity;
@@ -34,18 +35,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initToolbar();
-        shared_image = (ImageView) findViewById(R.id.shared_image);
-        shared_text = (TextView) findViewById(R.id.shared_text);
-
         getWindow().setExitTransition(new Slide());
         Explode explode = new Explode();
+
         explode.setDuration(3000);
         explode.setMode(Visibility.MODE_IN);
         explode.setInterpolator(new DecelerateInterpolator());
         getWindow().setReenterTransition(explode);
         getWindow().setSharedElementReenterTransition(new ChangeRect());
+        setContentView(R.layout.activity_main);
+        initToolbar();
+        shared_image = (ImageView) findViewById(R.id.shared_image);
+        shared_text = (TextView) findViewById(R.id.shared_text);
 
     }
 
@@ -68,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 , new Pair<View, String>(shared_text, "shared_text_"));
         startActivity(intent, activityOptionsCompat.toBundle());
     }
-   public void withSharedBer(View view) {
+
+    public void withSharedBer(View view) {
         Intent intent = new Intent(this, WithSharedElementTransitionsBerActivity.class);
         ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this
                 , new Pair<View, String>(shared_image, "shared_image_")
@@ -95,11 +97,17 @@ public class MainActivity extends AppCompatActivity {
     public void sceneLayout(View view) {
         start(SceneChangeBoundsLayoutActivity.class);
     }
+
     public void shape(View view) {
         start(AnimatedVectorActivity.class);
     }
+
     public void shapeC(View view) {
         start(CustomSVGActivity.class);
+    }
+
+    public void shapeZ(View view) {
+        start(CustomSVGTransitionFromActivity.class);
     }
 
     public void start(Class<?> cls) {

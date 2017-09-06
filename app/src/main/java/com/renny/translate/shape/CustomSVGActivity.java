@@ -15,11 +15,8 @@ public class CustomSVGActivity extends AppCompatActivity
         implements View.OnClickListener, SeekBar.OnSeekBarChangeListener {
 
     TransPathView transView;
-
     SeekBar seekBar;
 
-    public static final String   HEART = "M99,349 C193,240,283,165,400,99 C525,172,611,246,701,348 C521,416,433,511,400,700 C356,509,285,416,99,349";
-    public static final String TWITTER = "M99,349 C297,346,376,210,400,99 C432,208,506,345,701,348 C629,479,549,570,400,700 C227,569,194,522,99,349";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +24,7 @@ public class CustomSVGActivity extends AppCompatActivity
         setContentView(R.layout.activity_custom_svg);
         transView = (TransPathView)findViewById(R.id.trans_path_view);
         transView.setViewPort(1600, 1600);
-        transView.setPaths(HEART, TWITTER);
+        transView.setPaths(getString(R.string.heart), getString(R.string.twitter));
         transView.setOnClickListener(this);
 
         seekBar = (SeekBar)findViewById(R.id.seekbar);

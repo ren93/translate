@@ -34,6 +34,8 @@
         </activity>
         <activity android:name=".shape.AnimatedVectorActivity"/>
         <activity android:name=".shape.CustomSVGActivity"/>
+        <activity android:name=".shape.CustomSVGTransitionToActivity"/>
+        <activity android:name=".shape.CustomSVGTransitionFromActivity"/>
     </application>
 
 </manifest>

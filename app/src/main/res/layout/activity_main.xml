@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:trans="http://schemas.android.com/tools"
               android:id="@+id/master_layout"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -74,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="jump"
-            android:text="跳转"/>
+            android:text="转场"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -100,11 +101,18 @@
             android:layout_height="wrap_content"
             android:onClick="shape"
             android:text="形状改变"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="shapeC"
             android:text="自定义形状改变"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="shapeZ"
+            android:text="自定义形状改变转场"/>
 
     </LinearLayout>
 
@@ -125,5 +133,18 @@
         android:layout_marginTop="20dp"
         android:text="爱又米爱又米"
         />
+
+    <com.renny.translate.widget.TransPathView
+        android:id="@+id/trans_path_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        trans:animDuration="800"
+        trans:strokeColor="#2458ff"
+        trans:strokeType="fill"
+        trans:strokeWidth="2dp"
+        trans:viewPortHeight="240"
+        trans:viewPortWidth="160"/>
 </LinearLayout>
 
