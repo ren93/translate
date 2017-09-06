@@ -23,7 +23,6 @@ public class CustomSVGTransitionFromActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_svg_from);
         transView = (TransPathView) findViewById(R.id.trans_path_view);
-        transView.setViewPort(1600, 1600);
         transView.setPaths(getString(R.string.heart), getString(R.string.twitter));
         transView.setOnClickListener(this);
 

@@ -46,9 +46,9 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
 
     private float strokeWidth;
 
-    private float viewportWidth;
+    private float viewportWidth = 240;
 
-    private float viewportHeight;
+    private float viewportHeight = 240;
 
     private boolean withRotate = false;
 
@@ -76,10 +76,10 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
 
     public TransPathView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        loadAttrs(context, attrs, defStyleAttr);
+        loadAttrs(context, attrs);
     }
 
-    private void loadAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
+    private void loadAttrs(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TransPathView);
         strokeType = a.getInt(R.styleable.TransPathView_strokeType, STROKE);
         strokeColor = a.getColor(R.styleable.TransPathView_strokeColor, STROKE_COLOR);
@@ -90,14 +90,15 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
         path1 = a.getString(R.styleable.TransPathView_path1);
         path2 = a.getString(R.styleable.TransPathView_path2);
         a.recycle();
-
-        if(!TextUtils.isEmpty(path1) && !TextUtils.isEmpty(path2)) {
+        Log.d("trasn", "strokeType" + strokeType + "strokeColor" + strokeColor);
+        Log.d("trasn", "viewportHeight" + viewportHeight + "viewportWidth" + viewportWidth);
+        if (!TextUtils.isEmpty(path1) && !TextUtils.isEmpty(path2)) {
             buildActions();
         }
 
-        if(strokeType == STROKE) {
+        if (strokeType == STROKE) {
             paint.setStyle(Paint.Style.STROKE);
-        } else if(strokeType == FILL) {
+        } else if (strokeType == FILL) {
             paint.setStyle(Paint.Style.FILL);
         } else {
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -126,12 +127,12 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
 
         float viewportS = viewportHeight / viewportWidth;
         float viewS = 1.0f * height / width;
-        if(viewportS == viewS) {
+        if (viewportS == viewS) {
 
-        } else if(viewportS > viewS) {
-            width = (int)(height / viewportS);
+        } else if (viewportS > viewS) {
+            width = (int) (height / viewportS);
         } else {
-            height = (int)(width * viewportS);
+            height = (int) (width * viewportS);
         }
 
         setMeasuredDimension(width, height);
@@ -140,28 +141,32 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
         initShow();
     }
 
+    public void setStrokeType(int strokeType) {
+        this.strokeType = strokeType;
+    }
+
     private void buildActions() {
-        if(path1 == null || path1.isEmpty() || path2 == null || path2.isEmpty()) {
+        if (path1 == null || path1.isEmpty() || path2 == null || path2.isEmpty()) {
             Log.e(LOG_TAG, "pathString is null.");
             return;
         }
         String[] arr1 = path1.split(" ");
         String[] arr2 = path2.split(" ");
-        if(arr1.length != arr2.length) {
+        if (arr1.length != arr2.length) {
             Log.e(LOG_TAG, "The length of path1 do not equals path2.");
             return;
         }
         actions.clear();
-        for(int i = 0; i < arr1.length; i++) {
+        for (int i = 0; i < arr1.length; i++) {
             String str1 = arr1[i];
             String str2 = arr2[i];
             SVGAction action = new SVGAction();
-            if(str1.equalsIgnoreCase(SVGAction.ACTION_Z) && str2.equalsIgnoreCase(SVGAction.ACTION_Z)) {
+            if (str1.equalsIgnoreCase(SVGAction.ACTION_Z) && str2.equalsIgnoreCase(SVGAction.ACTION_Z)) {
                 action.setAction(SVGAction.ACTION_Z);
             } else {
                 String actionStr1 = str1.substring(0, 1);
                 String actionStr2 = str2.substring(0, 1);
-                if(!actionStr1.equals(actionStr2)) {
+                if (!actionStr1.equals(actionStr2)) {
                     Log.e(LOG_TAG, "path1 is not suitable for path2.");
                     return;
                 }
@@ -202,7 +207,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     }
 
     private void startTrans() {
-        if(actions == null || actions.isEmpty()) {
+        if (actions == null || actions.isEmpty()) {
             return;
         }
         recycler();
@@ -262,7 +267,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     }
 
     public void recycler() {
-        if(anim != null) {
+        if (anim != null) {
             anim.cancel();
             anim.removeAllListeners();
         }
@@ -276,7 +281,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
 
     private void refresh() {
         for (SVGAction a : actions) {
-            if(a.getAction().equalsIgnoreCase(SVGAction.ACTION_Z)) {
+            if (a.getAction().equalsIgnoreCase(SVGAction.ACTION_Z)) {
                 continue;
             }
             a.computeValue(fraction);
@@ -288,7 +293,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
         }
         invalidate();
 
-        if(withRotate) {
+        if (withRotate) {
             setRotation(fraction * rotate);
         }
     }

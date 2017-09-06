@@ -4,7 +4,15 @@
     xmlns:aapt="http://schemas.android.com/aapt"
     android:drawable="@drawable/ic_heart">
 
-
+    <target android:name="groupHeart">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="rotation"
+                android:valueFrom="-360"
+                android:valueTo="0"
+                android:duration="1000" />
+        </aapt:attr>
+    </target>
 
     <target
         android:name="heart">

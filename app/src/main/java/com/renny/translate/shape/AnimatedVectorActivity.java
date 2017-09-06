@@ -12,14 +12,7 @@ import android.widget.ImageView;
 
 import com.renny.translate.R;
 
-/**
- * <p>write the description
- *
- * @author renjialiang
- * @version [版本号]
- * @see [相关类/方法]
- * @since [产品/模块版本]
- */
+
 public class AnimatedVectorActivity extends AppCompatActivity {
 
     private ImageView imgBtn;
@@ -35,7 +28,6 @@ public class AnimatedVectorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animated_vector);
 
         imgBtn = (ImageView) findViewById(R.id.imgBtn);
-
         iv2 = (ImageView) findViewById(R.id.iv_2);
 
     }
