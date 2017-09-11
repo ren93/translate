@@ -23,7 +23,7 @@
         android:layout_height="260dp"
 
         android:scaleType="fitXY"
-        android:src="@drawable/logo_sms_login"/>
+       android:src="@color/colorAccent"/>
 
     <Button
         android:layout_width="wrap_content"
