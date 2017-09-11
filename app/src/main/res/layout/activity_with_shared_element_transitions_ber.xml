@@ -41,7 +41,7 @@
             android:id="@+id/tv_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="爱又米爱又米"
+            android:text="HelloWorld"
             android:transitionName="shared_text_"/>
 
         <LinearLayout

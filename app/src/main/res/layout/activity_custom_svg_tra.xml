@@ -17,27 +17,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To"/>
+            android:text="SVG动画"/>
     </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_below="@id/toolBar"
-        android:background="@drawable/logo_sms_login"
+        android:background="@color/colorAccent"
         />
 
-    <com.renny.translate.widget.TransPathView
+
+
+    <ImageView
         android:id="@+id/trans_path_view"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
-        android:transitionName="shared_transView_"
-        app:strokeColor="#2458ff"
-        app:strokeType="fill"
-        app:strokeWidth="2dp"
-        app:viewPortHeight="800"
-        app:viewPortWidth="800"/>
-
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/heart_twitter"
+        android:transitionName="shared_transView_"/>
 
 </RelativeLayout>

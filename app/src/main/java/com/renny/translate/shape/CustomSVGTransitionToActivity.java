@@ -6,39 +6,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.renny.translate.R;
 import com.renny.translate.listener.SimpleTransitionListener;
-import com.renny.translate.widget.TransPathView;
 
 
 public class CustomSVGTransitionToActivity extends AppCompatActivity
         implements View.OnClickListener {
 
-    TransPathView transView;
-
+    ImageView transView;
+    private boolean isTwitterChecked = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_svg_tra);
+        transView = (ImageView) findViewById(R.id.trans_path_view);
         final ChangeBounds changeBounds = new ChangeBounds();
-        changeBounds.setDuration(2000);
+        changeBounds.setDuration(1000);
         changeBounds.addListener(new SimpleTransitionListener() {
             @Override
             public void onTransitionStart(Transition transition) {
-                transView.setDuration((int) changeBounds.getDuration());
-                transView.startTransWithOutRotate();
+                isTwitterChecked = !isTwitterChecked;
+                final int[] stateSet = {android.R.attr.state_checked * (isTwitterChecked ? 1 : -1)};
+                transView.setImageState(stateSet, true);
             }
         });
         getWindow().setSharedElementEnterTransition(changeBounds);
-        transView = (TransPathView) findViewById(R.id.trans_path_view);
-        transView.setPaths(getString(R.string.heart), getString(R.string.twitter));
         transView.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
+        isTwitterChecked = !isTwitterChecked;
+        final int[] stateSet = {android.R.attr.state_checked * (isTwitterChecked ? 1 : -1)};
+        transView.setImageState(stateSet, true);
       super.onBackPressed();
     }
 

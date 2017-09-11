@@ -37,8 +37,10 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     private int duration;
 
     private String path1;
-
     private String path2;
+
+    private String fromPath;
+    private String toPath;
 
     private int strokeType;
 
@@ -93,7 +95,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
         Log.d("trasn", "strokeType" + strokeType + "strokeColor" + strokeColor);
         Log.d("trasn", "viewportHeight" + viewportHeight + "viewportWidth" + viewportWidth);
         if (!TextUtils.isEmpty(path1) && !TextUtils.isEmpty(path2)) {
-            buildActions();
+            setPaths(path1,path2);
         }
 
         if (strokeType == STROKE) {
@@ -111,6 +113,12 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     public void setPaths(String path1, String path2) {
         this.path1 = path1;
         this.path2 = path2;
+        if (path1 == null || path1.isEmpty() || path2 == null || path2.isEmpty()) {
+            Log.e(LOG_TAG, "pathString is null.");
+            return;
+        }
+        fromPath = format(path1);
+        toPath = format(path2);
         buildActions();
     }
 
@@ -146,12 +154,8 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     }
 
     private void buildActions() {
-        if (path1 == null || path1.isEmpty() || path2 == null || path2.isEmpty()) {
-            Log.e(LOG_TAG, "pathString is null.");
-            return;
-        }
-        String[] arr1 = path1.split(" ");
-        String[] arr2 = path2.split(" ");
+        String[] arr1 = fromPath.split("--");
+        String[] arr2 = toPath.split("--");
         if (arr1.length != arr2.length) {
             Log.e(LOG_TAG, "The length of path1 do not equals path2.");
             return;
@@ -177,12 +181,21 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
 
                 List<Float> valueFrom = new ArrayList<>();
                 for (String value : values1) {
-                    valueFrom.add(Float.parseFloat(value));
+                    try {
+                        valueFrom.add(Float.parseFloat(value)+50);
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 List<Float> valueTo = new ArrayList<>();
                 for (String value : values2) {
-                    valueTo.add(Float.parseFloat(value));
+                    try {
+                        valueTo.add(Float.parseFloat(value)+50);
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
                 action.setAction(actionStr1);
@@ -194,6 +207,21 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
         }
     }
 
+    private String format(String path) {
+        String trimPath = path.replace(" ", "");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < trimPath.length(); i++) {
+            char item = trimPath.charAt(i);
+            if ((item >= 'A' && item <= 'Z' || item >= 'a' && item <= 'z') && i != 0) {
+                sb.append("--");
+                sb.append(item);
+            } else {
+                sb.append(item);
+            }
+        }
+        return sb.toString();
+    }
+
     public void startTransWithRotate(float rotate) {
         this.withRotate = true;
         this.rotate = rotate;
@@ -201,6 +229,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     }
 
     public void startTransWithOutRotate() {
+
         this.withRotate = false;
         this.rotate = 0;
         startTrans();
@@ -219,28 +248,27 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     }
 
     private void exchangePath1AndPath2() {
-        String temp = path1;
-        path1 = path2;
-        path2 = temp;
+        fromPath = format(path2);
+        toPath = format(path1);
     }
 
-    private void actionPath(SVGAction action, Path buildPath) {
+    private void actionPath(SVGAction action) {
         List<Float> value = action.getValue();
         switch (action.getAction().toUpperCase()) {
             case SVGAction.ACTION_M:
-                buildPath.moveTo(value.get(0) * scale, value.get(1) * scale);
-                break;
-            case SVGAction.ACTION_Q:
-                buildPath.quadTo(value.get(0) * scale, value.get(1) * scale, value.get(2) * scale, value.get(3) * scale);
-                break;
-            case SVGAction.ACTION_C:
-                buildPath.cubicTo(value.get(0) * scale, value.get(1) * scale, value.get(2) * scale, value.get(3) * scale, value.get(4) * scale, value.get(5) * scale);
+                path.moveTo(value.get(0) * scale, value.get(1) * scale);
                 break;
             case SVGAction.ACTION_L:
-                buildPath.lineTo(value.get(0) * scale, value.get(1) * scale);
+                path.lineTo(value.get(0) * scale, value.get(1) * scale);
+                break;
+            case SVGAction.ACTION_Q:
+                path.quadTo(value.get(0) * scale, value.get(1) * scale, value.get(2) * scale, value.get(3) * scale);
+                break;
+            case SVGAction.ACTION_C:
+                path.cubicTo(value.get(0) * scale, value.get(1) * scale, value.get(2) * scale, value.get(3) * scale, value.get(4) * scale, value.get(5) * scale);
                 break;
             case SVGAction.ACTION_Z:
-                buildPath.close();
+                path.close();
                 break;
         }
     }
@@ -248,7 +276,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
     private void initShow() {
         path.reset();
         for (SVGAction a : actions) {
-            actionPath(a, path);
+            actionPath(a);
         }
     }
 
@@ -289,7 +317,7 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
 
         path.reset();
         for (SVGAction a : actions) {
-            actionPath(a, path);
+            actionPath(a);
         }
         invalidate();
 
@@ -377,4 +405,6 @@ public class TransPathView extends View implements ValueAnimator.AnimatorUpdateL
             this.valueTo = valueTo;
         }
     }
+
+
 }

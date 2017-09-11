@@ -7,26 +7,25 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.renny.translate.R;
-import com.renny.translate.widget.TransPathView;
 
 
 public class CustomSVGTransitionFromActivity extends AppCompatActivity
         implements View.OnClickListener {
 
-    TransPathView transView;
+    ImageView transView;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_svg_from);
-        transView = (TransPathView) findViewById(R.id.trans_path_view);
-        transView.setPaths(getString(R.string.heart), getString(R.string.twitter));
+        transView = (ImageView) findViewById(R.id.trans_path_view);
         transView.setOnClickListener(this);
-
     }
+
 
     @Override
     public void onClick(View view) {

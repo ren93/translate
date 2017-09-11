@@ -67,6 +67,4 @@ public class ChangeColor extends Transition {
         return null;
     }
 
-
-
 }

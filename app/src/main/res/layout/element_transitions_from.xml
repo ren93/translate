@@ -14,35 +14,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="To"
+            android:text="from"
             />
     </android.support.v7.widget.Toolbar>
+
 
     <RelativeLayout
         android:id="@+id/relay_flag"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:layout_below="@id/toolBar"
-        android:background="#FF00ff">
-
-
-    </RelativeLayout>
+        android:layout_alignParentBottom="true"
+        android:background="#FF00ff"/>
 
 
     <LinearLayout
         android:id="@+id/liney_bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/relay_flag"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tv_show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我是一行文字"
-            android:transitionName="shared_text_"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -56,18 +47,34 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginRight="16dp"
-                android:src="@mipmap/ic_launcher_round"
+                android:background="@color/colorPrimary"
+
                 android:transitionName="shared_image_"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/icon_bh"
+                android:id="@+id/shared_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="16dp"
-                android:background="@color/colorPrimary"
+                android:src="@mipmap/ic_launcher_round"
                 />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/shared_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我是一行文字"
+            android:transitionName="shared_text_"/>
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/liney_bottom"
+        android:layout_centerHorizontal="true"
+        android:onClick="withSharedFrom"
+        android:text="转场"
+        />
 
 </RelativeLayout>
