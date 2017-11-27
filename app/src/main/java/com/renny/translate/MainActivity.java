@@ -18,6 +18,7 @@ import com.renny.translate.scene.SceneColorActivity;
 import com.renny.translate.shape.AnimatedVectorActivity;
 import com.renny.translate.shape.CustomSVGActivity;
 import com.renny.translate.shape.CustomSVGTransitionFromActivity;
+import com.renny.translate.transitions.ExampleActivity;
 import com.renny.translate.transitions.TransitionsActivity;
 import com.renny.translate.transitions.TransitionsFromActivity;
 import com.renny.translate.transitions.WithSharedElementTransitionsBerActivity;
@@ -99,4 +100,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void example(View view) {
+        startActivity(new Intent(this, ExampleActivity.class),
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
+    }
 }

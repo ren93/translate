@@ -37,6 +37,8 @@
         <activity android:name=".shape.CustomSVGTransitionToActivity"/>
         <activity android:name=".shape.CustomSVGTransitionFromActivity"/>
         <activity android:name=".transitions.TransitionsFromActivity"/>
+        <activity android:name=".transitions.ExampleActivity">
+        </activity>
     </application>
 
 </manifest>

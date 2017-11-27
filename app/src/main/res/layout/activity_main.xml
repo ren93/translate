@@ -116,6 +116,12 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="example"
+        android:text="自定义示例"/>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/shared_image"
         android:layout_width="50dp"
